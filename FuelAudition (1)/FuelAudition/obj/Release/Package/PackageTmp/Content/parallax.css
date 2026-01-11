@@ -1,0 +1,310 @@
+﻿/*html {
+    background-repeat: no-repeat;
+    background-position: center;
+    font-size: 14px;
+    font-size: 1vw;
+    background-image: url(/Content/Images/puit_mobile.jpg);
+}
+
+@media (min-width: 1024px) {
+    html {
+        
+        webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-attachment: fixed;
+        background-image: url(/Content/Images/Puit.jpg);
+    }
+}*/
+
+.navbar-nav, .navbar-toggle {
+    font-size: 14px;
+}
+
+
+body:before {
+  content: "";
+  display: block;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+  background: url(/Content/Images/puit_mobile.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+body {
+    background-color: transparent;
+    font-size: 12px;
+}
+
+@media (min-width: 500px) {
+
+    body {
+        font-size: 14px;
+    }
+}
+
+
+
+
+
+.logo {
+    background: url(Images/LogoFuelAudition.png) no-repeat center center fixed;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    font-size: 5em;
+}
+
+.content-wrapper {
+    background-color: white;
+    font-size: 1.5em;
+}
+
+#wrapper.wrapper {
+    background-color: transparent;
+}
+
+
+#container {
+    position: fixed;
+    overflow-x: hidden;
+    height: 400px;
+    margin: 0;
+    padding: 0;
+}
+
+#page {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#parallax {
+    height: 450px;
+    margin: 0;
+    padding: 0;
+}
+
+span {
+    position: absolute;
+    left: 500px;
+    top: 905px;
+    width: 15px;
+    height: 15px;
+    background-color: transparent;
+    -webkit-border-radius: 2000px;
+    -moz-border-radius: 2000px;
+    border-radius: 2000px;
+    display: none;
+}
+
+#parallax .fond {
+    width: 700px;
+    display: inline-block;
+    height: 400px;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+#parallax .static {
+    top: 120px;
+    left: 50px;
+    padding: 20px;
+    position: absolute;
+    color: black;
+}
+
+
+.normal {
+    position: relative;
+    margin: 0;
+    padding: 20px 50px;
+    z-index: 1;
+}
+
+.contenu {
+    position: absolute;
+    color: White;
+    left: 50px;
+    top: 50px;
+    overflow: auto;
+}
+
+.boiteNoire {
+    background: rgba(0,0,0,.7);
+    background-image: none;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    margin-top: 20px;
+    padding: 20px;
+    -moz-box-shadow: 13px 13px 30px #000000;
+    -webkit-box-shadow: 13px 13px 30px #000000;
+    box-shadow: 13px 13px 30px #000000;
+    color: white;
+}
+
+.iconeAvecTexte .icone {
+    position: absolute;
+    left: -20px;
+    top: -40px;
+    border-radius: 200%;
+    border: 5px solid black;
+    width: 250px;
+    height: 250px;
+    text-align: center;
+    z-index: 99999;
+    background-color: white;
+    transition: all .5s linear;
+}
+
+    #statistique .icone:hover, .iconeAvecTexte .icone:focus {
+        position: absolute;
+        left: -30px;
+        top: -50px;
+        border-radius: 200%;
+        border: 5px solid black;
+        width: 275px;
+        height: 275px;
+        text-align: center;
+        z-index: 99999;
+        background-color: white;
+        transition: all .5s linear;
+    }
+
+
+    .iconeAvecTexte .icone i {
+        font-size: 10em;
+        margin-top: 50px;
+        transition: all .5s linear;
+    }
+
+    #statistique .icone:hover i, .iconeAvecTexte .icone:focus i {
+        font-size: 11em;
+        margin-top: 50px;
+        transition: all .5s linear;
+    }
+
+.iconeAvecTexte .texte {
+    border: 5px solid black;
+    height: 170px;
+    padding: 20px 20px 20px 250px;
+    font-size: 1.5em;
+}
+
+.iconeAvecTexte .graphique {
+    min-width: 600px;
+    position: relative;
+    height: 250px;
+    margin-top: 50px;
+}
+
+.cercle {
+    border-radius: 200%;
+    border: 5px solid white;
+    width: 250px;
+    height: 250px;
+    text-align: center;
+    z-index: 99999;
+    transition: all 1s linear;
+}
+
+    .cercle i {
+        font-size: 10em;
+        margin-top: 50px;
+        transition: all 1s linear;
+    }
+
+#lock.active {
+    margin-bottom: -260px;
+    color: black;
+}
+
+#file.active {
+    margin-top: -260px;
+}
+
+
+.iconeAvecTexte .phase {
+    min-width: 600px;
+    position: relative;
+    height: 250px;
+    margin-top: 50px;
+}
+
+    .iconeAvecTexte .phase i {
+        font-size: 10em;
+        margin-top: 50px;
+        opacity: 0.4;
+        transition: all .5s linear;
+    }
+
+.iconeAvecTexte .phase {
+    min-width: 600px;
+    position: relative;
+    height: 250px;
+    margin-top: 50px;
+}
+
+.iconeAvecTexte .noPhase {
+    font-size: 12em;
+    position: absolute;
+    top: 0px;
+    left: 70px;
+    transition: all .5s linear;
+}
+
+.iconeAvecTexte .icone:hover .noPhase, .iconeAvecTexte .icone:focus .noPhase {
+    opacity: 0.2;
+    transition: all .5s linear;
+}
+
+.iconeAvecTexte .icone:hover i, .iconeAvecTexte .icone:focus i {
+    font-size: 10em;
+    opacity: 1;
+    transition: all .5s linear;
+}
+
+p {
+    font-size: 16px;
+    text-align: justify;
+    margin-bottom: 20px;
+}
+
+.normal ul li > a {
+    color: rgb(0,0,150);
+    text-decoration: underline;
+}
+
+    .normal ul li > a:hover, a:focus {
+        color: rgb(0,0,255);
+        text-decoration: underline;
+    }
+
+.normal li {
+    font-size: 16px;
+}
+
+#texteLogo {
+    text-align: center;
+    left: 10px;
+    top: 60%;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    font-size: 17px;
+    text-shadow: rgba(50, 50, 50,0.2) 1px 1px 1px;
+    font-weight: bold;
+    color: #333;
+}

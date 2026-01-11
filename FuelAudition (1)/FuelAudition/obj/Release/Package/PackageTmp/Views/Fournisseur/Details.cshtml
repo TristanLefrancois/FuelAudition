@@ -1,0 +1,199 @@
+﻿@using FuelAudition.Models.Enum;
+@model FuelAudition.Models.ViewModel.FournisseurDetailVM
+
+@{
+    if (Model.ClientFournisseurId > 0)
+    {
+        ViewBag.Title = Resources.GlobalTitreModification;
+    }
+    else
+    {
+        ViewBag.Title = Resources.GlobalTitreCreation;
+    }
+
+    ViewBag.Description = Resources.FournisseurDetailsSousTitre;
+
+}
+
+@if (Model.EstEnregistrerAvecSucces)
+{
+    <div>
+        <div class="callout callout-success">
+            <h4><i class="fa fa-check-circle" style="margin-right:20px"></i>@Resources.GlobalEnregistrementMessage</h4>
+
+        </div>
+
+    </div>
+}
+
+@if (Model.Statut == (int)Statut.Refuser)
+{
+    <div>
+        <div class="callout callout-warning">
+            <h4><i class="fa fa-warning" style="margin-right:20px"></i> @Resources.FournisseurDetailsMessageRefuser</h4>
+            <p>@Model.Commentaire</p>
+        </div>
+
+    </div>
+
+}
+
+<div class="form-group">
+    @Html.ActionLink(@Resources.GlobalBoutonRetour, "Rechercher", "Fournisseur", null, new { @class = "btn btn-primary" })
+
+</div>
+
+<div class="row">
+
+    <form id="fournisseur" name="fournisseur" action="@Url.Action("Details","Fournisseur")" method="post">
+        @Html.AntiForgeryToken()
+
+        <input type="hidden" name="ClientId" id="ClientId" value="@Model.ClientId" />
+        <input type="hidden" name="ClientFournisseurId" id="ClientFournisseurId" value="@Model.ClientFournisseurId" />
+        <input type="hidden" name="FournisseurId" id="FournisseurId" value="@Model.FournisseurId" />
+
+        <div class="col-md-8">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <div class="box-body">
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Nom, new { @class = "control-label" })
+
+                            @Html.TextBoxFor(model => model.Nom, new { @class = "form-control", maxlength = 100, @placeholder = "Esso, Shell, Irving ..." })
+                            @Html.ValidationMessageFor(model => model.Nom, "", new { @class = "text-danger" })
+
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ProvinceId, new { @class = "control-label" })
+
+                            @Html.DropDownListFor(model => model.ProvinceId, Model.Provinces, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ProvinceId, "", new { @class = "text-danger" })
+
+                        </div>
+
+                    
+                        <div id="SectionVilles" class="form-group">
+                            @Html.Partial("_Villes", Model)
+                            
+
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Adresse1, new { @class = "control-label" })
+
+                            @Html.TextBoxFor(model => model.Adresse1, new { @class = "form-control", maxlength = 100 })
+                            @Html.ValidationMessageFor(model => model.Adresse1, "", new { @class = "text-danger" })
+
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.CodePostal, new { @class = "control-label" })
+
+                            @Html.TextBoxFor(model => model.CodePostal, new { @class = "form-control", maxlength = 100, @placeholder = "A0A 0A0" })
+                            @Html.ValidationMessageFor(model => model.CodePostal, "", new { @class = "text-danger" })
+
+                        </div>
+
+    
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.CarburantId, new { @class = "control-label" })
+                            <span class="fa-stack infobulle" data-toggle="tooltip" data-placement="right" data-html="true" title="@Resources.FournisseurDetailsInfoBulleCarburant">
+                                <i class="fa fa-circle fa-stack-1x"></i>
+                                <i class="fa fa-question fa-stack-1x"></i>
+                            </span>
+                           
+         
+                            @Html.DropDownListFor(model => model.CarburantId, Model.Carburants, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.CarburantId, "", new { @class = "text-danger" })
+
+                        </div>
+
+                        
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.VolumeId, new { @class = "control-label" })
+
+                            @Html.DropDownListFor(model => model.VolumeId, Model.Volumes, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.VolumeId, "", new { @class = "text-danger" })
+
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Marge, new { @class = "control-label" })
+                            <span class="fa-stack infobulle" data-toggle="tooltip" data-placement="right" data-html="true" title="@Resources.FournisseurDetailsInfoBulleMarge">
+                                <i class="fa fa-circle fa-stack-1x" ></i>
+                                <i class="fa fa-question fa-stack-1x"></i>
+                            </span>
+                          
+                            <div class="input-group">
+                                
+                                <input type="text" name="Marge" id="Marge" data-val="true" data-val-required="" value="@string.Format("{0:G29}", decimal.Parse(Model.Marge.ToString()))" class="form-control" maxlength="18" />
+                                <span class="input-group-addon"><i class="fa fa-usd"></i></span>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Marge, "", new { @class = "text-danger" })
+
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ActiviteId, new { @class = "control-label" })
+
+                            @Html.DropDownListFor(model => model.ActiviteId, Model.Activites, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ActiviteId, "", new { @class = "text-danger" })
+
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.DateDebutContrat)
+                            <div class='input-group date datetimepicker'>
+
+                                <input type='text' class="form-control" data-val="true" id="DateDebutContrat" name="DateDebutContrat" value="@(Model.DateDebutContrat.HasValue ? Model.DateDebutContrat.Value.ToString() : "" )" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.DateDebutContrat)
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.DateFinContrat)
+                            <div class='input-group date datetimepicker'>
+
+                                <input type='text' class="form-control" data-val="true" id="DateFinContrat" name="DateFinContrat" value="@(Model.DateFinContrat.HasValue ? Model.DateFinContrat.Value.ToString() : "" )" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.DateFinContrat)
+                        </div>
+
+
+
+                        <hr />
+                        <div class="form-group pull-right">
+
+                            <input type="submit" value="@Resources.GlobalBoutonEnregistrer" class="btn btn-primary" />
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/fournisseur")
+
+    <script type="text/javascript">
+
+        var urlObtenirVilles = '@Url.Action("ObtenirVilles")';
+        $(document).ready(function () {
+          
+            InitialiserFournisseur();
+        });
+        
+    </script>
+}

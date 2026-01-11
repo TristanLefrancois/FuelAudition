@@ -1,0 +1,164 @@
+﻿@model FuelAudition.Models.ViewModel.ClientDetailVM
+
+@{
+    if (Model.ClientId > 0)
+    {
+        ViewBag.Title = Resources.ClientDetailTitreCreation;
+    }
+    else
+    {
+        ViewBag.Title = Resources.ClientDetailTitreModification;
+    }
+
+    ViewBag.Description = Resources.ClientDetailSousTitre;
+
+}
+
+<div class="row">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="col-md-8">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <div class="box-body">
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Nom, new { @class = "control-label" })
+
+                            @Html.TextBoxFor(model => model.Nom, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Nom, "", new { @class = "text-danger" })
+
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Telephone, new { @class = "control-label" })
+
+                            @Html.TextBoxFor(model => model.Telephone, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Telephone, "", new { @class = "text-danger" })
+
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Inter, new { @class = "control-label" })
+
+                            @Html.TextBoxFor(model => model.Inter, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Inter, "", new { @class = "text-danger" })
+
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.FAX, new { @class = "control-label" })
+
+                            @Html.TextBoxFor(model => model.FAX, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.FAX, "", new { @class = "text-danger" })
+
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Email, new { @class = "control-label" })
+
+                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Adresse1, new { @class = "control-label" })
+
+                            @Html.TextBoxFor(model => model.Adresse1, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Adresse1, "", new { @class = "text-danger" })
+
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Adresse2, new { @class = "control-label" })
+
+                            @Html.TextBoxFor(model => model.Adresse2, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Adresse2, "", new { @class = "text-danger" })
+
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.VilleId, new { @class = "control-label" })
+
+                            @Html.DropDownListFor(model => model.VilleId, Model.Villes, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.VilleId, "", new { @class = "text-danger" })
+
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.CodePostal, new { @class = "control-label" })
+
+                            @Html.TextBoxFor(model => model.CodePostal, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.CodePostal, "", new { @class = "text-danger" })
+
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ContactNom, new { @class = "control-label" })
+
+                            @Html.TextBoxFor(model => model.ContactNom, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ContactNom, "", new { @class = "text-danger" })
+
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ContactTelephone, new { @class = "control-label" })
+
+                            @Html.TextBoxFor(model => model.ContactTelephone, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ContactTelephone, "", new { @class = "text-danger" })
+
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ContactInter, new { @class = "control-label" })
+
+                            @Html.TextBoxFor(model => model.ContactInter, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ContactInter, "", new { @class = "text-danger" })
+
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ContactEmail, new { @class = "control-label" })
+
+                            @Html.TextBoxFor(model => model.ContactEmail, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ContactEmail, "", new { @class = "text-danger" })
+
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.LangueId, new { @class = "control-label" })
+
+                            @Html.DropDownListFor(model => model.LangueId, Model.Langues, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.LangueId, "", new { @class = "text-danger" })
+
+                        </div>
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.Actif, new { @class = "control-label" })
+
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.Actif)
+                                @Html.ValidationMessageFor(model => model.Actif, "", new { @class = "text-danger" })
+                            </div>
+
+                        </div>*@
+                        <hr />
+                        <div class="form-group pull-right">
+
+                            <input type="submit" value="@Resources.GlobalBoutonEnregistrer" class="btn btn-primary" />
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

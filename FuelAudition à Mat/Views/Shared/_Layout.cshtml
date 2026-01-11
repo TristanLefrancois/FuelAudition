@@ -1,0 +1,421 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Fuel Audition</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Open+Sans" rel="stylesheet">
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/iCheck/flat/iCheck")
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("head", required: false)
+</head>
+
+@{
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+    string fr = "";
+    string en = "";
+    switch (culture)
+    {
+        case "fr-ca":
+            fr = "active";
+            break;
+        case "en-us":
+            en = "active";
+            break;
+        default:
+            fr = "active";
+            break;
+
+    }
+    FuelAudition.Models.ApplicationUser utilisateur = (FuelAudition.Models.ApplicationUser)Session["Utilisateur"];
+
+    string id = "";
+
+    if (ViewContext.RouteData.Values["id"] != null)
+    {
+        id = ViewContext.RouteData.Values["id"].ToString();
+    }
+}
+
+
+
+@if (!Request.IsAuthenticated)
+{
+    <body class="hold-transition skin-red layout-top-nav">
+        <form id="formCulture" method="post" action="@Url.Action("SetCulture", "Home")">
+            <input type="hidden" name="action" id="action" value="@(ViewContext.RouteData.Values["action"].ToString())" />
+            <input type="hidden" name="controller" id="controller" value="@(ViewContext.RouteData.Values["controller"].ToString())" />
+            <input type="hidden" name="id" id="id" value="@id" />
+            <input type="hidden" name="culture" id="culture" value="@culture" />
+        </form>
+        <div id="wrapper" class="wrapper">
+
+            <header class="main-header">
+                <nav class="navbar navbar-fixed-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <a href="@Url.Action("Index", "Home")" class="navbar-brand"><b>@Resources.MenuFuelAudition</b></a>
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+
+                            <ul class="nav navbar-nav">
+                                <li class="dropdown tasks-menu @fr">
+                                    <a id="fr" href="javascript:void(0)">
+                                        @Resources.MenuLangueFr
+                                    </a>
+
+                                </li>
+                                <li class="dropdown tasks-menu @en">
+                                    <a id="en" href="javascript:void(0)">
+                                        @Resources.MenuLangueEn
+                                    </a>
+
+                                </li>
+                            </ul>
+                        </div>
+
+
+                        <!-- /.navbar-collapse -->
+                        <!-- Navbar Right Menu -->
+                        <div class="navbar-custom-menu">
+                            <ul class="nav navbar-nav">
+
+                                <!-- Messages: style can be found in dropdown.less-->
+                                <!-- User Account Menu -->
+                                <li class="dropdown user user-menu">
+                                    <!-- Menu Toggle Button -->
+                                    <a href="@Url.Action("Login","Account")">@Resources.MenuConnexion</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /.navbar-custom-menu -->
+                    </div>
+                    <!-- /.container-fluid -->
+                </nav>
+            </header>
+            <!-- Full Width Column -->
+
+            @if (ViewContext.RouteData.Values["action"].ToString() == "Index")
+                {
+                @RenderBody()
+            }
+            else
+            {
+                <div class="content-wrapper">
+                    <div class="container">
+                        <section class="content-header">
+                            <h1>@ViewBag.Title</h1>
+                        </section>
+                        <!-- Main content -->
+                        <section class="content">
+                            @RenderBody()
+                        </section>
+                        <!-- /.content -->
+                    </div>
+                    <!-- /.container -->
+                </div>
+            }
+
+
+        </div>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        <script type="text/javascript">
+            var culture = '@(culture)';
+        </script>        
+        @RenderSection("scripts", required: false)
+    </body>
+}
+else
+{
+    <body class="hold-transition skin-red sidebar-mini">
+        <form id="formCulture" method="post" action="@Url.Action("SetCulture", "Home")">
+            <input type="hidden" name="action" id="action" value="@(ViewContext.RouteData.Values["action"].ToString())" />
+            <input type="hidden" name="controller" id="controller" value="@(ViewContext.RouteData.Values["controller"].ToString())" />
+            <input type="hidden" name="id" id="id" value="@id" />
+            <input type="hidden" name="culture" id="culture" value="@culture" />
+        </form>
+        <div class="wrapper">
+            <input type="hidden" id="erreurAjax" />
+            <!-- Main Header -->
+            <header class="main-header">
+
+                <!-- Logo -->
+                <a href="@Url.Action("Index","Client")" class="logo">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <span class="logo-mini"><b>@Resources.MenuConnectFuelAuditionMini</b></span>
+                    <!-- logo for regular state and mobile devices -->
+                    <span class="logo-lg"><b>@Resources.MenuConnectFuelAudition</b></span>
+                </a>
+
+                <!-- Header Navbar -->
+                <nav class="navbar navbar-static-top" role="navigation">
+                    <!-- Sidebar toggle button-->
+                    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                        <span class="sr-only">Toggle navigation</span>
+                    </a>
+                    <div class="navbar-custom-menu pull-left">
+
+                        <ul class="nav navbar-nav">
+                            <li class="tasks-menu @fr">
+                                <a id="fr" href="javascript:void(0)">
+                                    @Resources.MenuConnectLangueFr
+                                </a>
+
+                            </li>
+                            <li class="tasks-menu @en">
+                                <a id="en" href="javascript:void(0)">
+                                    @Resources.MenuConnectLangueEn
+                                </a>
+
+                            </li>
+
+                            @if (utilisateur.Roles.Any(x => x.RoleId == "f5d61934-8cfb-46d6-8049-70bfea78ec41"))
+                            {
+                                <li class="tasks-menu @(ViewContext.RouteData.Values["controller"].ToString() == "Admin" ? "active" : "")" >
+                                    <a id="admin" href="@Url.Action("Rechercher", "Admin")">
+                                        Administration
+                                    </a>
+
+                                </li>
+
+                            }
+                            
+                        </ul>
+
+
+                    </div>
+                    <!-- Navbar Right Menu -->
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+
+                            <!-- User Account Menu -->
+                            <li class="dropdown user user-menu">
+                                <!-- Menu Toggle Button -->
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <!-- The user image in the navbar-->
+                                    <i class="fa fa-user user-image"></i>
+
+                                    <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                                    <span>@utilisateur.NomComplet</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <!-- The user image in the menu -->
+                                    <li class="user-header">
+                                        <i class="fa fa-user fa-4x img-circle"></i>
+
+                                        <p>
+                                            @utilisateur.NomComplet
+                                            <small>@Resources.MenuConnectUtilisateurDate @utilisateur.DateCreation.ToLongDateString()</small>
+                                        </p>
+                                    </li>
+
+                                    <li class="user-footer">
+
+                                        <div class="pull-right">
+                                            <form method="post" action="@Url.Action("LogOff","Account")">
+                                                @Html.AntiForgeryToken()
+                                                <input type="submit" class="btn btn-default btn-flat" value="@Resources.MenuConnectUtilisateurDeconnexion" />
+                                            </form>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="main-sidebar">
+
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+
+                    <!-- Sidebar user panel (optional) -->
+                    <div class="user-panel">
+                        <div class="pull-left image">
+                            <i class="fa fa-user fa img-circle"></i>
+
+                        </div>
+                        <div class="pull-left info">
+                            <p>@utilisateur.NomComplet</p>
+                            <!-- Status -->
+                            <a href="#"><i class="fa fa-circle text-success"></i>@Resources.MenuConnectSideBarStatut</a>
+                        </div>
+                    </div>
+
+
+                    <!-- Sidebar Menu -->
+                    <ul class="sidebar-menu">
+                        <li class="header">@Resources.MenuConnectSideBarTitre</li>
+                        <!-- Optionally, you can add icons to the links -->
+                        <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Client" && ViewContext.RouteData.Values["action"].ToString() == "Index" ? "active" : "")">
+                            <a href="@Url.Action("Index","Client")">
+                                <i class="fa fa-home"></i>
+                                <span>@Resources.MenuConnectSideBarAccueil</span>
+                            </a>
+                        </li>
+                        @{
+                            string action = utilisateur.ClientId == null ? "Create" : "Details";
+
+                        }
+
+                        <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Client" && (ViewContext.RouteData.Values["action"].ToString() == "Create" || ViewContext.RouteData.Values["action"].ToString() == "Details")  ? "active" : "")">
+                            <a href="@Url.Action(action, "Client", new { id = utilisateur.ClientId })">
+                                <i class="fa fa-file"></i>
+                                <span>@Resources.MenuConnectSideBarInformations</span>
+                            </a>
+                        </li>
+
+                        <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Camion" ? "active" : "")">
+                            <a href="@Url.Action("Details", "Camion")">
+                                <i class="fa fa-truck"></i>
+                                <span>Équipements Diesel</span>
+                            </a>
+                        </li>
+
+                        <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Fournisseur" ? "active" : "")">
+                            <a href="@Url.Action("Rechercher", "Fournisseur")">
+                                <i class="fa fa-tint"></i>
+                                <span>@Resources.MenuConnectSideBarFournisseur</span>
+                            </a>
+                        </li>
+
+                        <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Statistique" ? "active" : "")">
+                            <a href="@Url.Action("Graphique", "Statistique")">
+                                <i class="fa fa-line-chart"></i>
+                                <span>@Resources.MenuConnectSideBarStatistique</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                    <!-- /.sidebar-menu -->
+                </section>
+                <!-- /.sidebar -->
+            </aside>
+
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        @ViewBag.Title
+                        <small>@ViewBag.Description</small>
+                    </h1>
+
+                </section>
+
+                <!-- Main content -->
+                <section id="content" class="content">
+
+                    @RenderBody()
+
+                </section>
+                <!-- /.content -->
+            </div>
+            <!-- /.content-wrapper -->
+            <!-- Main Footer -->
+            <footer class="main-footer">
+                <!-- To the right -->
+                <div class="pull-right hidden-xs">
+
+                </div>
+                <!-- Default to the left -->
+                <strong>Copyright &copy; 2016 <a href="#">Fuel Audition</a>.</strong> All rights reserved.
+            </footer>
+
+            <!-- Control Sidebar -->
+            <aside class="control-sidebar control-sidebar-dark">
+                <!-- Create the tabs -->
+                <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+                    <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+                    <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <!-- Home tab content -->
+                    <div class="tab-pane active" id="control-sidebar-home-tab">
+                        <h3 class="control-sidebar-heading">Recent Activity</h3>
+                        <ul class="control-sidebar-menu">
+                            <li>
+                                <a href="javascript::;">
+                                    <i class="menu-icon fa fa-birthday-cake bg-red"></i>
+
+                                    <div class="menu-info">
+                                        <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
+
+                                        <p>Will be 23 on April 24th</p>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- /.control-sidebar-menu -->
+
+                        <h3 class="control-sidebar-heading">Tasks Progress</h3>
+                        <ul class="control-sidebar-menu">
+                            <li>
+                                <a href="javascript::;">
+                                    <h4 class="control-sidebar-subheading">
+                                        Custom Template Design
+                                        <span class="pull-right-container">
+                                            <span class="label label-danger pull-right">70%</span>
+                                        </span>
+                                    </h4>
+
+                                    <div class="progress progress-xxs">
+                                        <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- /.control-sidebar-menu -->
+
+                    </div>
+                    <!-- /.tab-pane -->
+                    <!-- Stats tab content -->
+                    <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
+                    <!-- /.tab-pane -->
+                    <!-- Settings tab content -->
+                    <div class="tab-pane" id="control-sidebar-settings-tab">
+                        <form method="post">
+                            <h3 class="control-sidebar-heading">General Settings</h3>
+
+                            <div class="form-group">
+                                <label class="control-sidebar-subheading">
+                                    Report panel usage
+                                    <input type="checkbox" class="pull-right" checked>
+                                </label>
+
+                                <p>
+                                    Some information about this general settings option
+                                </p>
+                            </div>
+                            <!-- /.form-group -->
+                        </form>
+                    </div>
+                    <!-- /.tab-pane -->
+                </div>
+            </aside>
+            <!-- /.control-sidebar -->
+            <!-- Add the sidebar's background. This div must be placed
+                 immediately after the control sidebar -->
+            <div class="control-sidebar-bg"></div>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        <script type="text/javascript">
+            var culture = '@(culture)';
+        </script>   
+        @RenderSection("scripts", required: false)
+    </body>
+                            }
+</html>

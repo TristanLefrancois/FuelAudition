@@ -1,0 +1,200 @@
+﻿@using FuelAudition.Models;
+@using FuelAudition.Models.Enum;
+@using System.Globalization;
+@model FuelAudition.Models.ViewModel.ResultatRechercheClientAdminVM
+
+<input type="hidden" id="PageCourante" value="@Model.PageCourante.ToString()" />
+<input type="hidden" id="Trie" value="@Model.Trie" />
+<input type="hidden" id="SensTrie" value="@Model.SensTrie" />
+
+@if (Model.ClientFournisseurs.Count > 0)
+{
+    <h5>@Model.Total résultats</h5>
+    string langue = CultureInfo.CurrentCulture.Name;
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th data-trie="Nom">
+                @Resources.FournisseurRechercheColonneNom
+                <i class="fa fa-sort pull-right"></i>
+            </th>
+
+            <th data-trie="Volume">
+                @Resources.FournisseurRechercheColonneVolume
+                <i class="fa fa-sort pull-right"></i>
+            </th>
+            <th data-trie="Marge">
+                @Resources.FournisseurRechercheColonneMarge
+                <i class="fa fa-sort pull-right"></i>
+            </th>
+            <th data-trie="Statut" style="width:75px">
+                Statut
+                <i class="fa fa-sort pull-right"></i>
+            </th>
+            <th style="width:65px">
+            </th>
+        </tr>
+
+        @foreach (ClientFournisseur clientFournisseur in Model.ClientFournisseurs)
+        {
+            <tr data-id="@clientFournisseur.ClientFournisseurId" data-titre="@clientFournisseur.Client.Nom">
+                <td data-col="Nom">
+                    @Html.DisplayFor(modelItem => clientFournisseur.Client.Nom)
+                </td>
+
+                <td data-col="Volume">
+                    @if (langue == "fr")
+                    {
+                        @Html.DisplayFor(modelItem => clientFournisseur.Volume.NomFr)
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => clientFournisseur.Volume.NomAn)
+                    }
+
+                </td>
+                <td data-col="Marge">
+                    @string.Format("{0:G29}", decimal.Parse(clientFournisseur.Marge.ToString()))
+                </td>
+                <td data-col="Statut" style="text-align:center">
+                    @switch (clientFournisseur.Statut)
+                    {
+                        case (int)Statut.EnAttenteApprobation:
+                            <i class="fa fa-clock-o" style="font-size:20px" data-toggle="tooltip" data-placement="right" data-html="true" title="En attente d'approbation"></i>
+                            break;
+                        case (int)Statut.Approuver:
+                            <i class="fa fa-check" style="color:green;font-size:20px" data-toggle="tooltip" data-placement="right" data-html="true" title="Approuver"></i>
+                            break;
+                        case (int)Statut.Refuser:
+                            <i class="fa fa-times" style="color:red;font-size:20px" data-toggle="tooltip" data-placement="right" data-html="true" title="Refuser"></i>
+                            break;
+                        default:
+                            break;
+                    }
+
+                </td>
+                <td class="text-center">
+
+                    <i class="fa fa-pencil fa-lg modifier" title="@Resources.GlobalBoutonModifier"></i>
+
+
+                </td>
+            </tr>
+        }
+
+    </table>
+
+
+    string classe = "";
+    int suivant = Model.PageCourante + 1;
+    int precedent = Model.PageCourante - 1;
+    double dernierePage = Math.Ceiling((double)Model.Total / (double)Model.NbElementParPage);
+
+    if (Model.PageCourante == 1)
+    {
+        classe = "disabled";
+        precedent = -1;
+    }
+
+    if (dernierePage == 0)
+    {
+        dernierePage = 1;
+    }
+
+
+
+    <nav class="text-center">
+        <ul class="pagination">
+            <li class="@classe">
+                <a href="javascript:void(0)" class="classe" data-page="1" aria-label="First">
+                    <span aria-hidden="true">&laquo;&laquo;</span>
+                </a>
+            </li>
+            <li class="@classe">
+                <a href="javascript:void(0)" class="classe" data-page="@precedent" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+
+            @if (dernierePage > 10)
+            {
+
+
+                int debut = Model.PageCourante - 5;
+                debut = debut < 1 ? 1 : debut;
+
+                int fin = Model.PageCourante + 5;
+                fin = fin > dernierePage ? (int)dernierePage : fin;
+
+                for (int i = debut; i <= fin; i++)
+                {
+                    if (i == Model.PageCourante)
+                    {
+                        <li class="active">
+                            <a href="javascript:void(0)" data-page="@i">@i<span class="sr-only">(current)</span></a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li><a href="javascript:void(0)" data-page="@i">@i</a></li>
+                    }
+
+                }
+
+            }
+            else
+            {
+                for (int i = 1; i <= dernierePage; i++)
+                {
+                    if (i == Model.PageCourante)
+                    {
+                        <li class="active"><a href="javascript:void(0)" data-page="@i">@i <span class="sr-only">(current)</span></a></li>
+                    }
+                    else
+                    {
+                        <li><a href="javascript:void(0)" data-page="@i">@i</a></li>
+                    }
+
+                }
+            }
+
+
+
+
+            @{
+                classe = "";
+                if (Model.Total < Model.NbElementParPage || Model.PageCourante == dernierePage)
+                {
+                    classe = "disabled";
+                    suivant = -1;
+                }
+
+            }
+
+
+            <li class="@classe">
+                <a href="javascript:void(0)" aria-label="Next" data-page="@suivant">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+            <li class="@classe">
+                <a href="javascript:void(0)" aria-label="Last" data-page="@dernierePage">
+                    <span aria-hidden="true">&raquo;&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+                }
+                else
+                {
+                    <h5>Aucun résultat</h5>
+                }
+
+
+@section Scripts {
+
+    <script type="text/javascript">
+        $(document).ready(InitialiserResultatRecherche);
+
+    </script>
+}

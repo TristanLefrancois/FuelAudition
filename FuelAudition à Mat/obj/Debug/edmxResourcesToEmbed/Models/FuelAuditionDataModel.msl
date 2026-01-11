@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FuelAuditionConnectModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="CanadaDailyRacksRaws">
+      <EntityTypeMapping TypeName="FuelAuditionConnectModel.CanadaDailyRacksRaw">
+        <MappingFragment StoreEntitySet="CanadaDailyRacksRaw">
+          <ScalarProperty Name="CanadaDailyRacksRawId" ColumnName="CanadaDailyRacksRawId" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="CityCode" ColumnName="CityCode" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="Supplier" ColumnName="Supplier" />
+          <ScalarProperty Name="IndBrand" ColumnName="IndBrand" />
+          <ScalarProperty Name="Product" ColumnName="Product" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Move" ColumnName="Move" />
+          <ScalarProperty Name="MoveDate" ColumnName="MoveDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Carburants">
+      <EntityTypeMapping TypeName="FuelAuditionConnectModel.Carburant">
+        <MappingFragment StoreEntitySet="Carburant">
+          <ScalarProperty Name="CarburantId" ColumnName="CarburantId" />
+          <ScalarProperty Name="NomFr" ColumnName="NomFr" />
+          <ScalarProperty Name="NomAn" ColumnName="NomAn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="FuelAuditionConnectModel.Client">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Inter" ColumnName="Inter" />
+          <ScalarProperty Name="FAX" ColumnName="FAX" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Adresse1" ColumnName="Adresse1" />
+          <ScalarProperty Name="Adresse2" ColumnName="Adresse2" />
+          <ScalarProperty Name="VilleId" ColumnName="VilleId" />
+          <ScalarProperty Name="CodePostal" ColumnName="CodePostal" />
+          <ScalarProperty Name="ContactNom" ColumnName="ContactNom" />
+          <ScalarProperty Name="ContactTelephone" ColumnName="ContactTelephone" />
+          <ScalarProperty Name="ContactInter" ColumnName="ContactInter" />
+          <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
+          <ScalarProperty Name="LangueId" ColumnName="LangueId" />
+          <ScalarProperty Name="Actif" ColumnName="Actif" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientFournisseurs">
+      <EntityTypeMapping TypeName="FuelAuditionConnectModel.ClientFournisseur">
+        <MappingFragment StoreEntitySet="ClientFournisseur">
+          <ScalarProperty Name="ClientFournisseurId" ColumnName="ClientFournisseurId" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="FournisseurId" ColumnName="FournisseurId" />
+          <ScalarProperty Name="CarburantId" ColumnName="CarburantId" />
+          <ScalarProperty Name="VolumeId" ColumnName="VolumeId" />
+          <ScalarProperty Name="Marge" ColumnName="Marge" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientUsers">
+      <EntityTypeMapping TypeName="FuelAuditionConnectModel.ClientUser">
+        <MappingFragment StoreEntitySet="ClientUser">
+          <ScalarProperty Name="ClientUserId" ColumnName="ClientUserId" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Devises">
+      <EntityTypeMapping TypeName="FuelAuditionConnectModel.Devise">
+        <MappingFragment StoreEntitySet="Devise">
+          <ScalarProperty Name="DeviseId" ColumnName="DeviseId" />
+          <ScalarProperty Name="DeviseCode" ColumnName="DeviseCode" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Fournisseurs">
+      <EntityTypeMapping TypeName="FuelAuditionConnectModel.Fournisseur">
+        <MappingFragment StoreEntitySet="Fournisseur">
+          <ScalarProperty Name="FournisseurId" ColumnName="FournisseurId" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Inter" ColumnName="Inter" />
+          <ScalarProperty Name="FAX" ColumnName="FAX" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Adresse1" ColumnName="Adresse1" />
+          <ScalarProperty Name="Adresse2" ColumnName="Adresse2" />
+          <ScalarProperty Name="VilleId" ColumnName="VilleId" />
+          <ScalarProperty Name="CodePostal" ColumnName="CodePostal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Langues">
+      <EntityTypeMapping TypeName="FuelAuditionConnectModel.Langue">
+        <MappingFragment StoreEntitySet="Langue">
+          <ScalarProperty Name="LangueId" ColumnName="LangueId" />
+          <ScalarProperty Name="LangueCode" ColumnName="LangueCode" />
+          <ScalarProperty Name="NomFr" ColumnName="NomFr" />
+          <ScalarProperty Name="NomAn" ColumnName="NomAn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pays">
+      <EntityTypeMapping TypeName="FuelAuditionConnectModel.Pay">
+        <MappingFragment StoreEntitySet="Pays">
+          <ScalarProperty Name="PaysId" ColumnName="PaysId" />
+          <ScalarProperty Name="PaysCode" ColumnName="PaysCode" />
+          <ScalarProperty Name="NomFr" ColumnName="NomFr" />
+          <ScalarProperty Name="NomAn" ColumnName="NomAn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Provinces">
+      <EntityTypeMapping TypeName="FuelAuditionConnectModel.Province">
+        <MappingFragment StoreEntitySet="Province">
+          <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+          <ScalarProperty Name="ProvinceCode" ColumnName="ProvinceCode" />
+          <ScalarProperty Name="NomFr" ColumnName="NomFr" />
+          <ScalarProperty Name="NomAn" ColumnName="NomAn" />
+          <ScalarProperty Name="PaysId" ColumnName="PaysId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ravitaillements">
+      <EntityTypeMapping TypeName="FuelAuditionConnectModel.Ravitaillement">
+        <MappingFragment StoreEntitySet="Ravitaillement">
+          <ScalarProperty Name="RavitaillementId" ColumnName="RavitaillementId" />
+          <ScalarProperty Name="RavitaillementCode" ColumnName="RavitaillementCode" />
+          <ScalarProperty Name="NomFr" ColumnName="NomFr" />
+          <ScalarProperty Name="NomAn" ColumnName="NomAn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Services">
+      <EntityTypeMapping TypeName="FuelAuditionConnectModel.Service">
+        <MappingFragment StoreEntitySet="Service">
+          <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+          <ScalarProperty Name="ServiceCode" ColumnName="ServiceCode" />
+          <ScalarProperty Name="NomFr" ColumnName="NomFr" />
+          <ScalarProperty Name="NomAn" ColumnName="NomAn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Taxes">
+      <EntityTypeMapping TypeName="FuelAuditionConnectModel.Taxe">
+        <MappingFragment StoreEntitySet="Taxe">
+          <ScalarProperty Name="TaxeId" ColumnName="TaxeId" />
+          <ScalarProperty Name="TaxeCode" ColumnName="TaxeCode" />
+          <ScalarProperty Name="TauxDate" ColumnName="TauxDate" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Taux" ColumnName="Taux" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Villes">
+      <EntityTypeMapping TypeName="FuelAuditionConnectModel.Ville">
+        <MappingFragment StoreEntitySet="Ville">
+          <ScalarProperty Name="VilleId" ColumnName="VilleId" />
+          <ScalarProperty Name="VilleCode" ColumnName="VilleCode" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Désignation" ColumnName="Désignation" />
+          <ScalarProperty Name="MRCCM" ColumnName="MRCCM" />
+          <ScalarProperty Name="Région" ColumnName="Région" />
+          <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Volumes">
+      <EntityTypeMapping TypeName="FuelAuditionConnectModel.Volume">
+        <MappingFragment StoreEntitySet="Volume">
+          <ScalarProperty Name="VolumeId" ColumnName="VolumeId" />
+          <ScalarProperty Name="NomFr" ColumnName="NomFr" />
+          <ScalarProperty Name="NomAn" ColumnName="NomAn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

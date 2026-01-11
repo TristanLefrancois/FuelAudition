@@ -1,0 +1,138 @@
+﻿@using System.Globalization;
+@using FuelAudition.Models;
+@model FuelAudition.Models.ViewModel.CamionDetailVM
+
+@{
+
+    ViewBag.Title = Resources.CamionDetailTitre;
+    ViewBag.Description = Resources.CamionDetailSousTitre;
+
+}
+
+@if (Model.EstEnregistrerAvecSucces)
+{
+    <div>
+        <div class="callout callout-success">
+            <h4><i class="fa fa-check-circle" style="margin-right:20px"></i>@Resources.GlobalEnregistrementMessage</h4>
+
+        </div>
+
+    </div>
+}
+
+
+<div class="row">
+
+    <form id="Camion" name="Camion" action="@Url.Action("Details", "Camion")" method="post">
+        @Html.AntiForgeryToken()
+
+        <input type="hidden" id="CamionsId" name="CamionsId" />
+
+        <div class="col-md-8">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <div class="box-body">
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.NombreCamion, new { @class = "control-label" })
+
+                            @Html.TextBoxFor(model => model.NombreCamion, new { @class = "form-control", maxlength = 5 })
+                            @Html.ValidationMessageFor(model => model.NombreCamion, "", new { @class = "text-danger" })
+
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.NombreHeureOperation, new { @class = "control-label" })
+
+                            @Html.TextBoxFor(model => model.NombreHeureOperation, new { @class = "form-control", maxlength = 9 })
+                            @Html.ValidationMessageFor(model => model.NombreHeureOperation, "", new { @class = "text-danger" })
+
+                        </div>
+
+                        <h3>@Resources.CamionDetailTitreTypeEquipement</h3>
+
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.CamionId, new { @class = "control-label" })
+                            @Html.DropDownListFor(model => model.CamionId, Model.Camions, new { @class = "form-control" })
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <button id="Ajouter" class="btn btn-default">@Resources.GlobalBoutonAjouter</button>
+                        </div>
+
+
+                        @{string langue = CultureInfo.CurrentCulture.Name; }
+                        <table id="tblClientCamion" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th >
+                                        @Resources.CamionDetailColonneNom
+                                        
+                                    </th>
+                                    <th style="width:65px">
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (ClientCamion clientCamion in Model.ClientCamions)
+                                {
+
+                                    <tr data-id="@clientCamion.CamionId">
+
+                                        <td data-col="Nom">
+                                            @if (langue.ToUpper().Contains("FR"))
+                                            {
+                                                @Html.DisplayFor(modelItem => clientCamion.Camion.NomFr)
+                                            }
+                                            else
+                                            {
+                                                @Html.DisplayFor(modelItem => clientCamion.Camion.NomAn)
+                                            }
+
+                                        </td>
+
+
+                                        <td class="text-center">
+
+                                            <i title="@Resources.GlobalBoutonSupprimer" class="fa fa-trash-o fa-lg supprimer"></i>
+
+                                        </td>
+                                    </tr>
+
+                                }
+                            </tbody>
+                        </table>
+
+                        <hr />
+                        <div class="form-group pull-right">
+
+                            <input type="submit" value="@Resources.GlobalBoutonEnregistrer" class="btn btn-primary" />
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/Camion")
+
+    <script type="text/javascript">
+
+        var urlModifier = '@(Url.Action("Details", "Camion"))';
+
+        $(document).ready(function () {
+
+            InitialiserCamion();
+        });
+
+    </script>
+}

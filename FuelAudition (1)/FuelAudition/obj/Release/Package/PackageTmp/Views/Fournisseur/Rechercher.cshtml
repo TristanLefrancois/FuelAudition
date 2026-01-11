@@ -1,0 +1,47 @@
+﻿@model FuelAudition.Models.ViewModel.RechercheFournisseurVM
+
+
+@{
+
+    ViewBag.Title = Resources.FournisseurRechercheTitre;
+    ViewBag.Description = Resources.FournisseurRechercherSousTitre;
+
+}
+
+@if (Model.EstSuppressionAvecSucces)
+{
+    <div>
+        <div class="callout callout-success">
+            <h4><i class="fa fa-check-circle" style="margin-right:20px"></i>@Resources.GlobalSuppressionSucces</h4>
+
+        </div>
+
+    </div>
+}
+
+<div class="form-group">
+    @Html.ActionLink(@Resources.GlobalBoutonAjouter, "Create", "Fournisseur", null, new { @class = "btn btn-primary" })
+    
+</div>
+
+
+
+<div class="visible" id="resultatRecherche">
+    @Html.Partial("_ResultatRecherche", Model.ResultatRecherche)
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/fournisseur")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            InitialiserRecherche();
+            InitialiserResultatRecherche();
+        });
+        var messageSuppression = '@(Resources.FournisseurModaleSuppressionMessage)';
+        var urlModifier = '@(Url.Action("Details", "Fournisseur"))';
+        var urlResultatRecherche = '@(Url.Action("ResultatRecherche", "Fournisseur"))';
+        var urlSupprimer = '@(Url.Action("Supprimer", "Fournisseur"))';
+    </script>
+}
+

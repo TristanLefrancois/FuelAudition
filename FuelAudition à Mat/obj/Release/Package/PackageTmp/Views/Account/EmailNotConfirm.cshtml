@@ -1,0 +1,38 @@
+﻿@using FuelAudition.Models
+@model EmailNotConfirmViewModel
+@{
+    ViewBag.Title = "Confirmation inscription";
+}
+
+<h2>Confirmation d'inscription</h2>
+
+@if (Model.Send)
+{
+    <div>
+        <div class="callout callout-success">
+            <h4><i class="fa fa-check-circle" style="margin-right:20px"></i>Votre courriel a été envoyé avec succès</h4>
+
+        </div>
+
+    </div>
+}
+
+<p>Vous devez confirmer votre inscription en cliquant sur le lien dans le courriel qui vous a été envoyé.</p>
+
+<form method="post" action="@Url.Action("SendEmailAgain","Account")">
+    <input type="hidden" name="Email" id="Email" value="@Model.Email" />
+    <p>Vous ne trouvez plus votre courriel. Pas de panique.</p>
+    <a id="sendMail" href="javascript:void(0)">Envoyer moi le courriel à nouveau</a>
+
+</form>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#sendMail").click(function () {
+                $("form").submit();
+            });
+        });
+    </script>
+}
+

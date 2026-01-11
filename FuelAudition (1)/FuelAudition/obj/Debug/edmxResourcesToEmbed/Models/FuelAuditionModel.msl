@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="np38965_FAModelStoreContainer" CdmEntityContainer="np38965_FAEntities">
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="np38965_FAModel.AspNetRoles">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="np38965_FAModel.AspNetUserClaims">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="np38965_FAModel.AspNetUserLogins">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="np38965_FAModel.AspNetUsers">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="DateCreation" ColumnName="DateCreation" />
+          <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="np38965_FAModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetUsers">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+      <EndProperty Name="AspNetRoles">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="Activites">
+      <EntityTypeMapping TypeName="np38965_FAModel.Activite">
+        <MappingFragment StoreEntitySet="Activite">
+          <ScalarProperty Name="NomAn" ColumnName="NomAn" />
+          <ScalarProperty Name="NomFr" ColumnName="NomFr" />
+          <ScalarProperty Name="ActiviteId" ColumnName="ActiviteId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Camions">
+      <EntityTypeMapping TypeName="np38965_FAModel.Camion">
+        <MappingFragment StoreEntitySet="Camion">
+          <ScalarProperty Name="NomAn" ColumnName="NomAn" />
+          <ScalarProperty Name="NomFr" ColumnName="NomFr" />
+          <ScalarProperty Name="CamionId" ColumnName="CamionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientCamions">
+      <EntityTypeMapping TypeName="np38965_FAModel.ClientCamion">
+        <MappingFragment StoreEntitySet="ClientCamion">
+          <ScalarProperty Name="CamionId" ColumnName="CamionId" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="ClientCamionId" ColumnName="ClientCamionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Carburants">
+      <EntityTypeMapping TypeName="np38965_FAModel.Carburant">
+        <MappingFragment StoreEntitySet="Carburant">
+          <ScalarProperty Name="Actif" ColumnName="Actif" />
+          <ScalarProperty Name="NomAn" ColumnName="NomAn" />
+          <ScalarProperty Name="NomFr" ColumnName="NomFr" />
+          <ScalarProperty Name="CarburantId" ColumnName="CarburantId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="np38965_FAModel.Client">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="Utilisateur" ColumnName="Utilisateur" />
+          <ScalarProperty Name="DateModification" ColumnName="DateModification" />
+          <ScalarProperty Name="DateCreation" ColumnName="DateCreation" />
+          <ScalarProperty Name="Actif" ColumnName="Actif" />
+          <ScalarProperty Name="NomCompagnie" ColumnName="NomCompagnie" />
+          <ScalarProperty Name="DateCreationCompagnie" ColumnName="DateCreationCompagnie" />
+          <ScalarProperty Name="NombreEmploye" ColumnName="NombreEmploye" />
+          <ScalarProperty Name="NombreHeureOperation" ColumnName="NombreHeureOperation" />
+          <ScalarProperty Name="NombreCamion" ColumnName="NombreCamion" />
+          <ScalarProperty Name="LangueId" ColumnName="LangueId" />
+          <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
+          <ScalarProperty Name="ContactInter" ColumnName="ContactInter" />
+          <ScalarProperty Name="ContactTelephone" ColumnName="ContactTelephone" />
+          <ScalarProperty Name="ContactNom" ColumnName="ContactNom" />
+          <ScalarProperty Name="CodePostal" ColumnName="CodePostal" />
+          <ScalarProperty Name="VilleId" ColumnName="VilleId" />
+          <ScalarProperty Name="Adresse2" ColumnName="Adresse2" />
+          <ScalarProperty Name="Adresse1" ColumnName="Adresse1" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="FAX" ColumnName="FAX" />
+          <ScalarProperty Name="Inter" ColumnName="Inter" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientFournisseurs">
+      <EntityTypeMapping TypeName="np38965_FAModel.ClientFournisseur">
+        <MappingFragment StoreEntitySet="ClientFournisseur">
+          <ScalarProperty Name="Commentaire" ColumnName="Commentaire" />
+          <ScalarProperty Name="Statut" ColumnName="Statut" />
+          <ScalarProperty Name="DateDebutContrat" ColumnName="DateDebutContrat" />
+          <ScalarProperty Name="ActiviteId" ColumnName="ActiviteId" />
+          <ScalarProperty Name="DateFinContrat" ColumnName="DateFinContrat" />
+          <ScalarProperty Name="Marge" ColumnName="Marge" />
+          <ScalarProperty Name="VolumeId" ColumnName="VolumeId" />
+          <ScalarProperty Name="CarburantId" ColumnName="CarburantId" />
+          <ScalarProperty Name="FournisseurId" ColumnName="FournisseurId" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="ClientFournisseurId" ColumnName="ClientFournisseurId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Devises">
+      <EntityTypeMapping TypeName="np38965_FAModel.Devise">
+        <MappingFragment StoreEntitySet="Devise">
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="DeviseCode" ColumnName="DeviseCode" />
+          <ScalarProperty Name="DeviseId" ColumnName="DeviseId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dtproperties">
+      <EntityTypeMapping TypeName="np38965_FAModel.dtproperty">
+        <MappingFragment StoreEntitySet="dtproperties">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="lvalue" ColumnName="lvalue" />
+          <ScalarProperty Name="uvalue" ColumnName="uvalue" />
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="property" ColumnName="property" />
+          <ScalarProperty Name="objectid" ColumnName="objectid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Fournisseurs">
+      <EntityTypeMapping TypeName="np38965_FAModel.Fournisseur">
+        <MappingFragment StoreEntitySet="Fournisseur">
+          <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+          <ScalarProperty Name="CodePostal" ColumnName="CodePostal" />
+          <ScalarProperty Name="VilleId" ColumnName="VilleId" />
+          <ScalarProperty Name="Adresse2" ColumnName="Adresse2" />
+          <ScalarProperty Name="Adresse1" ColumnName="Adresse1" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="FAX" ColumnName="FAX" />
+          <ScalarProperty Name="Inter" ColumnName="Inter" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="FournisseurId" ColumnName="FournisseurId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Langues">
+      <EntityTypeMapping TypeName="np38965_FAModel.Langue">
+        <MappingFragment StoreEntitySet="Langue">
+          <ScalarProperty Name="NomAn" ColumnName="NomAn" />
+          <ScalarProperty Name="NomFr" ColumnName="NomFr" />
+          <ScalarProperty Name="LangueCode" ColumnName="LangueCode" />
+          <ScalarProperty Name="LangueId" ColumnName="LangueId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pays">
+      <EntityTypeMapping TypeName="np38965_FAModel.Pay">
+        <MappingFragment StoreEntitySet="Pays">
+          <ScalarProperty Name="NomAn" ColumnName="NomAn" />
+          <ScalarProperty Name="NomFr" ColumnName="NomFr" />
+          <ScalarProperty Name="PaysCode" ColumnName="PaysCode" />
+          <ScalarProperty Name="PaysId" ColumnName="PaysId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Provinces">
+      <EntityTypeMapping TypeName="np38965_FAModel.Province">
+        <MappingFragment StoreEntitySet="Province">
+          <ScalarProperty Name="PaysId" ColumnName="PaysId" />
+          <ScalarProperty Name="NomAn" ColumnName="NomAn" />
+          <ScalarProperty Name="NomFr" ColumnName="NomFr" />
+          <ScalarProperty Name="ProvinceCode" ColumnName="ProvinceCode" />
+          <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ravitaillements">
+      <EntityTypeMapping TypeName="np38965_FAModel.Ravitaillement">
+        <MappingFragment StoreEntitySet="Ravitaillement">
+          <ScalarProperty Name="NomAn" ColumnName="NomAn" />
+          <ScalarProperty Name="NomFr" ColumnName="NomFr" />
+          <ScalarProperty Name="RavitaillementCode" ColumnName="RavitaillementCode" />
+          <ScalarProperty Name="RavitaillementId" ColumnName="RavitaillementId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Services">
+      <EntityTypeMapping TypeName="np38965_FAModel.Service">
+        <MappingFragment StoreEntitySet="Service">
+          <ScalarProperty Name="NomAn" ColumnName="NomAn" />
+          <ScalarProperty Name="NomFr" ColumnName="NomFr" />
+          <ScalarProperty Name="ServiceCode" ColumnName="ServiceCode" />
+          <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="np38965_FAModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Taxes">
+      <EntityTypeMapping TypeName="np38965_FAModel.Taxe">
+        <MappingFragment StoreEntitySet="Taxe">
+          <ScalarProperty Name="Taux" ColumnName="Taux" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="TauxDate" ColumnName="TauxDate" />
+          <ScalarProperty Name="TaxeCode" ColumnName="TaxeCode" />
+          <ScalarProperty Name="TaxeId" ColumnName="TaxeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Villes">
+      <EntityTypeMapping TypeName="np38965_FAModel.Ville">
+        <MappingFragment StoreEntitySet="Ville">
+          <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+          <ScalarProperty Name="Région" ColumnName="Région" />
+          <ScalarProperty Name="MRCCM" ColumnName="MRCCM" />
+          <ScalarProperty Name="Désignation" ColumnName="Désignation" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="VilleCode" ColumnName="VilleCode" />
+          <ScalarProperty Name="VilleId" ColumnName="VilleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Volumes">
+      <EntityTypeMapping TypeName="np38965_FAModel.Volume">
+        <MappingFragment StoreEntitySet="Volume">
+          <ScalarProperty Name="NomAn" ColumnName="NomAn" />
+          <ScalarProperty Name="NomFr" ColumnName="NomFr" />
+          <ScalarProperty Name="VolumeId" ColumnName="VolumeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CanadaDailyRacksRaws">
+      <EntityTypeMapping TypeName="np38965_FAModel.CanadaDailyRacksRaw">
+        <MappingFragment StoreEntitySet="CanadaDailyRacksRaw">
+          <ScalarProperty Name="MoveDate" ColumnName="MoveDate" />
+          <ScalarProperty Name="Move" ColumnName="Move" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Product" ColumnName="Product" />
+          <ScalarProperty Name="IndBrand" ColumnName="IndBrand" />
+          <ScalarProperty Name="Supplier" ColumnName="Supplier" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="CityCode" ColumnName="CityCode" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="IdCanadianDailyRackRaw" ColumnName="IdCanadianDailyRackRaw" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

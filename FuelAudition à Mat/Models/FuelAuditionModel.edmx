@@ -1,0 +1,1509 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="np38965_FAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Activite">
+          <Key>
+            <PropertyRef Name="ActiviteId" />
+          </Key>
+          <Property Name="ActiviteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NomFr" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NomAn" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Camion">
+          <Key>
+            <PropertyRef Name="CamionId" />
+          </Key>
+          <Property Name="CamionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NomFr" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NomAn" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClientCamion">
+          <Key>
+            <PropertyRef Name="ClientCamionId" />
+          </Key>
+          <Property Name="ClientCamionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientId" Type="int" Nullable="false" />
+          <Property Name="CamionId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="ClientId" Type="int" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="100" />
+          <Property Name="Prenom" Type="nvarchar" MaxLength="100" />
+          <Property Name="DateCreation" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'np38965_FA.dbo.CanadaDailyRacksRaw' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+        <EntityType Name="CanadaDailyRacksRaw">
+          <Key>
+            <PropertyRef Name="IdCanadianDailyRackRaw" />
+            <PropertyRef Name="Date" />
+            <PropertyRef Name="CityCode" />
+            <PropertyRef Name="CityName" />
+            <PropertyRef Name="Supplier" />
+            <PropertyRef Name="IndBrand" />
+            <PropertyRef Name="Product" />
+            <PropertyRef Name="Price" />
+          </Key>
+          <Property Name="IdCanadianDailyRackRaw" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CityCode" Type="int" Nullable="false" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Supplier" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IndBrand" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Product" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Move" Type="nvarchar" MaxLength="10" />
+          <Property Name="MoveDate" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Carburant">
+          <Key>
+            <PropertyRef Name="CarburantId" />
+          </Key>
+          <Property Name="CarburantId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NomFr" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NomAn" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Actif" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Telephone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Inter" Type="nvarchar" MaxLength="10" />
+          <Property Name="FAX" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="250" />
+          <Property Name="Adresse1" Type="nvarchar" MaxLength="100" />
+          <Property Name="Adresse2" Type="nvarchar" MaxLength="50" />
+          <Property Name="VilleId" Type="int" />
+          <Property Name="CodePostal" Type="nvarchar" MaxLength="10" />
+          <Property Name="ContactNom" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContactTelephone" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContactInter" Type="nvarchar" MaxLength="10" />
+          <Property Name="ContactEmail" Type="nvarchar" MaxLength="250" />
+          <Property Name="LangueId" Type="int" />
+          <Property Name="NombreCamion" Type="int" />
+          <Property Name="NombreHeureOperation" Type="int" />
+          <Property Name="NombreEmploye" Type="int" />
+          <Property Name="DateCreationCompagnie" Type="date" />
+          <Property Name="NomCompagnie" Type="nvarchar" MaxLength="100" />
+          <Property Name="Actif" Type="bit" Nullable="false" />
+          <Property Name="DateCreation" Type="datetime" />
+          <Property Name="DateModification" Type="datetime" />
+          <Property Name="Utilisateur" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ClientFournisseur">
+          <Key>
+            <PropertyRef Name="ClientFournisseurId" />
+          </Key>
+          <Property Name="ClientFournisseurId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientId" Type="int" Nullable="false" />
+          <Property Name="FournisseurId" Type="int" Nullable="false" />
+          <Property Name="CarburantId" Type="int" Nullable="false" />
+          <Property Name="VolumeId" Type="int" Nullable="false" />
+          <Property Name="Marge" Type="decimal" Precision="18" Scale="9" Nullable="false" />
+          <Property Name="DateFinContrat" Type="datetime" />
+          <Property Name="ActiviteId" Type="int" Nullable="false" />
+          <Property Name="DateDebutContrat" Type="datetime" />
+          <Property Name="Statut" Type="int" Nullable="false" />
+          <Property Name="Commentaire" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Devise">
+          <Key>
+            <PropertyRef Name="DeviseId" />
+          </Key>
+          <Property Name="DeviseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeviseCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dtproperties">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="property" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="objectid" Type="int" />
+          <Property Name="property" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="value" Type="varchar" MaxLength="255" />
+          <Property Name="uvalue" Type="nvarchar" MaxLength="255" />
+          <Property Name="lvalue" Type="image" />
+          <Property Name="version" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Fournisseur">
+          <Key>
+            <PropertyRef Name="FournisseurId" />
+          </Key>
+          <Property Name="FournisseurId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Telephone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Inter" Type="nvarchar" MaxLength="5" />
+          <Property Name="FAX" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="250" />
+          <Property Name="Adresse1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Adresse2" Type="nvarchar" MaxLength="50" />
+          <Property Name="VilleId" Type="int" />
+          <Property Name="CodePostal" Type="nvarchar" MaxLength="10" />
+          <Property Name="ProvinceId" Type="int" />
+        </EntityType>
+        <EntityType Name="Langue">
+          <Key>
+            <PropertyRef Name="LangueId" />
+          </Key>
+          <Property Name="LangueId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LangueCode" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="NomFr" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NomAn" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pays">
+          <Key>
+            <PropertyRef Name="PaysId" />
+          </Key>
+          <Property Name="PaysId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaysCode" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="NomFr" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NomAn" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Province">
+          <Key>
+            <PropertyRef Name="ProvinceId" />
+          </Key>
+          <Property Name="ProvinceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProvinceCode" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="NomFr" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NomAn" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PaysId" Type="int" />
+        </EntityType>
+        <EntityType Name="Ravitaillement">
+          <Key>
+            <PropertyRef Name="RavitaillementId" />
+          </Key>
+          <Property Name="RavitaillementId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RavitaillementCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="NomFr" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NomAn" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="ServiceId" />
+          </Key>
+          <Property Name="ServiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServiceCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="NomFr" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NomAn" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Taxe">
+          <Key>
+            <PropertyRef Name="TaxeId" />
+          </Key>
+          <Property Name="TaxeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaxeCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TauxDate" Type="datetime" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Taux" Type="real" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ville">
+          <Key>
+            <PropertyRef Name="VilleId" />
+          </Key>
+          <Property Name="VilleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VilleCode" Type="int" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Désignation" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="MRCCM" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Région" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ProvinceId" Type="int" />
+        </EntityType>
+        <EntityType Name="Volume">
+          <Key>
+            <PropertyRef Name="VolumeId" />
+          </Key>
+          <Property Name="VolumeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NomFr" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NomAn" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Client_Langue">
+          <End Role="Langue" Type="Self.Langue" Multiplicity="0..1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langue">
+              <PropertyRef Name="LangueId" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="LangueId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_Ville">
+          <End Role="Ville" Type="Self.Ville" Multiplicity="0..1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ville">
+              <PropertyRef Name="VilleId" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="VilleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientCamion_Camion">
+          <End Role="Camion" Type="Self.Camion" Multiplicity="1" />
+          <End Role="ClientCamion" Type="Self.ClientCamion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Camion">
+              <PropertyRef Name="CamionId" />
+            </Principal>
+            <Dependent Role="ClientCamion">
+              <PropertyRef Name="CamionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientCamion_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="ClientCamion" Type="Self.ClientCamion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="ClientCamion">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientFournisseur_Carburant">
+          <End Role="Carburant" Type="Self.Carburant" Multiplicity="1" />
+          <End Role="ClientFournisseur" Type="Self.ClientFournisseur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Carburant">
+              <PropertyRef Name="CarburantId" />
+            </Principal>
+            <Dependent Role="ClientFournisseur">
+              <PropertyRef Name="CarburantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientFournisseur_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="ClientFournisseur" Type="Self.ClientFournisseur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="ClientFournisseur">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientFournisseur_Fournisseur">
+          <End Role="Fournisseur" Type="Self.Fournisseur" Multiplicity="1" />
+          <End Role="ClientFournisseur" Type="Self.ClientFournisseur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fournisseur">
+              <PropertyRef Name="FournisseurId" />
+            </Principal>
+            <Dependent Role="ClientFournisseur">
+              <PropertyRef Name="FournisseurId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientFournisseur_Service">
+          <End Role="Activite" Type="Self.Activite" Multiplicity="1" />
+          <End Role="ClientFournisseur" Type="Self.ClientFournisseur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activite">
+              <PropertyRef Name="ActiviteId" />
+            </Principal>
+            <Dependent Role="ClientFournisseur">
+              <PropertyRef Name="ActiviteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientFournisseur_Volume">
+          <End Role="Volume" Type="Self.Volume" Multiplicity="1" />
+          <End Role="ClientFournisseur" Type="Self.ClientFournisseur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Volume">
+              <PropertyRef Name="VolumeId" />
+            </Principal>
+            <Dependent Role="ClientFournisseur">
+              <PropertyRef Name="VolumeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fournisseur_Province">
+          <End Role="Province" Type="Self.Province" Multiplicity="0..1" />
+          <End Role="Fournisseur" Type="Self.Fournisseur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Province">
+              <PropertyRef Name="ProvinceId" />
+            </Principal>
+            <Dependent Role="Fournisseur">
+              <PropertyRef Name="ProvinceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fournisseur_Ville">
+          <End Role="Ville" Type="Self.Ville" Multiplicity="0..1" />
+          <End Role="Fournisseur" Type="Self.Fournisseur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ville">
+              <PropertyRef Name="VilleId" />
+            </Principal>
+            <Dependent Role="Fournisseur">
+              <PropertyRef Name="VilleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProvinceEtat_Pays">
+          <End Role="Pays" Type="Self.Pays" Multiplicity="0..1" />
+          <End Role="Province" Type="Self.Province" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pays">
+              <PropertyRef Name="PaysId" />
+            </Principal>
+            <Dependent Role="Province">
+              <PropertyRef Name="PaysId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ville_ProvinceEtat">
+          <End Role="Province" Type="Self.Province" Multiplicity="0..1" />
+          <End Role="Ville" Type="Self.Ville" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Province">
+              <PropertyRef Name="ProvinceId" />
+            </Principal>
+            <Dependent Role="Ville">
+              <PropertyRef Name="ProvinceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="np38965_FAModelStoreContainer">
+          <EntitySet Name="Activite" EntityType="Self.Activite" Schema="Client" store:Type="Tables" />
+          <EntitySet Name="Camion" EntityType="Self.Camion" Schema="Client" store:Type="Tables" />
+          <EntitySet Name="ClientCamion" EntityType="Self.ClientCamion" Schema="Client" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Carburant" EntityType="Self.Carburant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientFournisseur" EntityType="Self.ClientFournisseur" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Devise" EntityType="Self.Devise" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dtproperties" EntityType="Self.dtproperties" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fournisseur" EntityType="Self.Fournisseur" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Langue" EntityType="Self.Langue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pays" EntityType="Self.Pays" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Province" EntityType="Self.Province" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ravitaillement" EntityType="Self.Ravitaillement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Taxe" EntityType="Self.Taxe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ville" EntityType="Self.Ville" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Volume" EntityType="Self.Volume" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CanadaDailyRacksRaw" EntityType="Self.CanadaDailyRacksRaw" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CanadaDailyRacksRaw].[IdCanadianDailyRackRaw] AS [IdCanadianDailyRackRaw], 
+    [CanadaDailyRacksRaw].[Date] AS [Date], 
+    [CanadaDailyRacksRaw].[CityCode] AS [CityCode], 
+    [CanadaDailyRacksRaw].[CityName] AS [CityName], 
+    [CanadaDailyRacksRaw].[Supplier] AS [Supplier], 
+    [CanadaDailyRacksRaw].[IndBrand] AS [IndBrand], 
+    [CanadaDailyRacksRaw].[Product] AS [Product], 
+    [CanadaDailyRacksRaw].[Price] AS [Price], 
+    [CanadaDailyRacksRaw].[Move] AS [Move], 
+    [CanadaDailyRacksRaw].[MoveDate] AS [MoveDate]
+    FROM [dbo].[CanadaDailyRacksRaw] AS [CanadaDailyRacksRaw]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Client_Langue" Association="Self.FK_Client_Langue">
+            <End Role="Langue" EntitySet="Langue" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_Ville" Association="Self.FK_Client_Ville">
+            <End Role="Ville" EntitySet="Ville" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientCamion_Camion" Association="Self.FK_ClientCamion_Camion">
+            <End Role="Camion" EntitySet="Camion" />
+            <End Role="ClientCamion" EntitySet="ClientCamion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientCamion_Client" Association="Self.FK_ClientCamion_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="ClientCamion" EntitySet="ClientCamion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientFournisseur_Carburant" Association="Self.FK_ClientFournisseur_Carburant">
+            <End Role="Carburant" EntitySet="Carburant" />
+            <End Role="ClientFournisseur" EntitySet="ClientFournisseur" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientFournisseur_Client" Association="Self.FK_ClientFournisseur_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="ClientFournisseur" EntitySet="ClientFournisseur" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientFournisseur_Fournisseur" Association="Self.FK_ClientFournisseur_Fournisseur">
+            <End Role="Fournisseur" EntitySet="Fournisseur" />
+            <End Role="ClientFournisseur" EntitySet="ClientFournisseur" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientFournisseur_Service" Association="Self.FK_ClientFournisseur_Service">
+            <End Role="Activite" EntitySet="Activite" />
+            <End Role="ClientFournisseur" EntitySet="ClientFournisseur" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientFournisseur_Volume" Association="Self.FK_ClientFournisseur_Volume">
+            <End Role="Volume" EntitySet="Volume" />
+            <End Role="ClientFournisseur" EntitySet="ClientFournisseur" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fournisseur_Province" Association="Self.FK_Fournisseur_Province">
+            <End Role="Province" EntitySet="Province" />
+            <End Role="Fournisseur" EntitySet="Fournisseur" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fournisseur_Ville" Association="Self.FK_Fournisseur_Ville">
+            <End Role="Ville" EntitySet="Ville" />
+            <End Role="Fournisseur" EntitySet="Fournisseur" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProvinceEtat_Pays" Association="Self.FK_ProvinceEtat_Pays">
+            <End Role="Pays" EntitySet="Pays" />
+            <End Role="Province" EntitySet="Province" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ville_ProvinceEtat" Association="Self.FK_Ville_ProvinceEtat">
+            <End Role="Province" EntitySet="Province" />
+            <End Role="Ville" EntitySet="Ville" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="np38965_FAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="np38965_FAEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetRoles" EntityType="np38965_FAModel.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="np38965_FAModel.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserLogins" EntityType="np38965_FAModel.AspNetUserLogins" />
+          <EntitySet Name="AspNetUsers" EntityType="np38965_FAModel.AspNetUsers" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="np38965_FAModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="np38965_FAModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="np38965_FAModel.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <EntitySet Name="Activites" EntityType="np38965_FAModel.Activite" />
+          <EntitySet Name="Camions" EntityType="np38965_FAModel.Camion" />
+          <EntitySet Name="ClientCamions" EntityType="np38965_FAModel.ClientCamion" />
+          <EntitySet Name="Carburants" EntityType="np38965_FAModel.Carburant" />
+          <EntitySet Name="Clients" EntityType="np38965_FAModel.Client" />
+          <EntitySet Name="ClientFournisseurs" EntityType="np38965_FAModel.ClientFournisseur" />
+          <EntitySet Name="Devises" EntityType="np38965_FAModel.Devise" />
+          <EntitySet Name="dtproperties" EntityType="np38965_FAModel.dtproperty" />
+          <EntitySet Name="Fournisseurs" EntityType="np38965_FAModel.Fournisseur" />
+          <EntitySet Name="Langues" EntityType="np38965_FAModel.Langue" />
+          <EntitySet Name="Pays" EntityType="np38965_FAModel.Pay" />
+          <EntitySet Name="Provinces" EntityType="np38965_FAModel.Province" />
+          <EntitySet Name="Ravitaillements" EntityType="np38965_FAModel.Ravitaillement" />
+          <EntitySet Name="Services" EntityType="np38965_FAModel.Service" />
+          <EntitySet Name="sysdiagrams" EntityType="np38965_FAModel.sysdiagram" />
+          <EntitySet Name="Taxes" EntityType="np38965_FAModel.Taxe" />
+          <EntitySet Name="Villes" EntityType="np38965_FAModel.Ville" />
+          <EntitySet Name="Volumes" EntityType="np38965_FAModel.Volume" />
+          <EntitySet Name="CanadaDailyRacksRaws" EntityType="np38965_FAModel.CanadaDailyRacksRaw" />
+          <AssociationSet Name="FK_ClientFournisseur_Service" Association="np38965_FAModel.FK_ClientFournisseur_Service">
+            <End Role="Activite" EntitySet="Activites" />
+            <End Role="ClientFournisseur" EntitySet="ClientFournisseurs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientCamion_Camion" Association="np38965_FAModel.FK_ClientCamion_Camion">
+            <End Role="Camion" EntitySet="Camions" />
+            <End Role="ClientCamion" EntitySet="ClientCamions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientCamion_Client" Association="np38965_FAModel.FK_ClientCamion_Client">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="ClientCamion" EntitySet="ClientCamions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientFournisseur_Carburant" Association="np38965_FAModel.FK_ClientFournisseur_Carburant">
+            <End Role="Carburant" EntitySet="Carburants" />
+            <End Role="ClientFournisseur" EntitySet="ClientFournisseurs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_Langue" Association="np38965_FAModel.FK_Client_Langue">
+            <End Role="Langue" EntitySet="Langues" />
+            <End Role="Client" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_Ville" Association="np38965_FAModel.FK_Client_Ville">
+            <End Role="Ville" EntitySet="Villes" />
+            <End Role="Client" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientFournisseur_Client" Association="np38965_FAModel.FK_ClientFournisseur_Client">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="ClientFournisseur" EntitySet="ClientFournisseurs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientFournisseur_Fournisseur" Association="np38965_FAModel.FK_ClientFournisseur_Fournisseur">
+            <End Role="Fournisseur" EntitySet="Fournisseurs" />
+            <End Role="ClientFournisseur" EntitySet="ClientFournisseurs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientFournisseur_Volume" Association="np38965_FAModel.FK_ClientFournisseur_Volume">
+            <End Role="Volume" EntitySet="Volumes" />
+            <End Role="ClientFournisseur" EntitySet="ClientFournisseurs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fournisseur_Province" Association="np38965_FAModel.FK_Fournisseur_Province">
+            <End Role="Province" EntitySet="Provinces" />
+            <End Role="Fournisseur" EntitySet="Fournisseurs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fournisseur_Ville" Association="np38965_FAModel.FK_Fournisseur_Ville">
+            <End Role="Ville" EntitySet="Villes" />
+            <End Role="Fournisseur" EntitySet="Fournisseurs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProvinceEtat_Pays" Association="np38965_FAModel.FK_ProvinceEtat_Pays">
+            <End Role="Pay" EntitySet="Pays" />
+            <End Role="Province" EntitySet="Provinces" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ville_ProvinceEtat" Association="np38965_FAModel.FK_Ville_ProvinceEtat">
+            <End Role="Province" EntitySet="Provinces" />
+            <End Role="Ville" EntitySet="Villes" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="np38965_FAModel.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="np38965_FAModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="np38965_FAModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="ClientId" Type="Int32" />
+          <Property Name="Nom" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Prenom" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreation" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="np38965_FAModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="np38965_FAModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="np38965_FAModel.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Type="np38965_FAModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="np38965_FAModel.AspNetUserClaims" Role="AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Type="np38965_FAModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="np38965_FAModel.AspNetUserLogins" Role="AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Type="np38965_FAModel.AspNetRoles" Role="AspNetRoles" Multiplicity="*" />
+          <End Type="np38965_FAModel.AspNetUsers" Role="AspNetUsers" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Activite">
+          <Key>
+            <PropertyRef Name="ActiviteId" />
+          </Key>
+          <Property Name="ActiviteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomFr" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NomAn" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ClientFournisseurs" Relationship="np38965_FAModel.FK_ClientFournisseur_Service" FromRole="Activite" ToRole="ClientFournisseur" />
+        </EntityType>
+        <EntityType Name="Camion">
+          <Key>
+            <PropertyRef Name="CamionId" />
+          </Key>
+          <Property Name="CamionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomFr" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NomAn" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ClientCamions" Relationship="np38965_FAModel.FK_ClientCamion_Camion" FromRole="Camion" ToRole="ClientCamion" />
+        </EntityType>
+        <EntityType Name="ClientCamion">
+          <Key>
+            <PropertyRef Name="ClientCamionId" />
+          </Key>
+          <Property Name="ClientCamionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <Property Name="CamionId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Camion" Relationship="np38965_FAModel.FK_ClientCamion_Camion" FromRole="ClientCamion" ToRole="Camion" />
+          <NavigationProperty Name="Client" Relationship="np38965_FAModel.FK_ClientCamion_Client" FromRole="ClientCamion" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="Carburant">
+          <Key>
+            <PropertyRef Name="CarburantId" />
+          </Key>
+          <Property Name="CarburantId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomFr" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NomAn" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Actif" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ClientFournisseurs" Relationship="np38965_FAModel.FK_ClientFournisseur_Carburant" FromRole="Carburant" ToRole="ClientFournisseur" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Inter" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="FAX" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Adresse1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Adresse2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VilleId" Type="Int32" />
+          <Property Name="CodePostal" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ContactNom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ContactTelephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ContactInter" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ContactEmail" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="LangueId" Type="Int32" />
+          <Property Name="NombreCamion" Type="Int32" />
+          <Property Name="NombreHeureOperation" Type="Int32" />
+          <Property Name="NombreEmploye" Type="Int32" />
+          <Property Name="DateCreationCompagnie" Type="DateTime" Precision="0" />
+          <Property Name="NomCompagnie" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Actif" Type="Boolean" Nullable="false" />
+          <Property Name="DateCreation" Type="DateTime" Precision="3" />
+          <Property Name="DateModification" Type="DateTime" Precision="3" />
+          <Property Name="Utilisateur" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ClientCamions" Relationship="np38965_FAModel.FK_ClientCamion_Client" FromRole="Client" ToRole="ClientCamion" />
+          <NavigationProperty Name="Langue" Relationship="np38965_FAModel.FK_Client_Langue" FromRole="Client" ToRole="Langue" />
+          <NavigationProperty Name="Ville" Relationship="np38965_FAModel.FK_Client_Ville" FromRole="Client" ToRole="Ville" />
+          <NavigationProperty Name="ClientFournisseurs" Relationship="np38965_FAModel.FK_ClientFournisseur_Client" FromRole="Client" ToRole="ClientFournisseur" />
+        </EntityType>
+        <EntityType Name="ClientFournisseur">
+          <Key>
+            <PropertyRef Name="ClientFournisseurId" />
+          </Key>
+          <Property Name="ClientFournisseurId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <Property Name="FournisseurId" Type="Int32" Nullable="false" />
+          <Property Name="CarburantId" Type="Int32" Nullable="false" />
+          <Property Name="VolumeId" Type="Int32" Nullable="false" />
+          <Property Name="Marge" Type="Decimal" Nullable="false" Precision="18" Scale="9" />
+          <Property Name="DateFinContrat" Type="DateTime" Precision="3" />
+          <Property Name="ActiviteId" Type="Int32" Nullable="false" />
+          <Property Name="DateDebutContrat" Type="DateTime" Precision="3" />
+          <Property Name="Statut" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Activite" Relationship="np38965_FAModel.FK_ClientFournisseur_Service" FromRole="ClientFournisseur" ToRole="Activite" />
+          <NavigationProperty Name="Carburant" Relationship="np38965_FAModel.FK_ClientFournisseur_Carburant" FromRole="ClientFournisseur" ToRole="Carburant" />
+          <NavigationProperty Name="Client" Relationship="np38965_FAModel.FK_ClientFournisseur_Client" FromRole="ClientFournisseur" ToRole="Client" />
+          <NavigationProperty Name="Fournisseur" Relationship="np38965_FAModel.FK_ClientFournisseur_Fournisseur" FromRole="ClientFournisseur" ToRole="Fournisseur" />
+          <NavigationProperty Name="Volume" Relationship="np38965_FAModel.FK_ClientFournisseur_Volume" FromRole="ClientFournisseur" ToRole="Volume" />
+          <Property Name="Commentaire" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Devise">
+          <Key>
+            <PropertyRef Name="DeviseId" />
+          </Key>
+          <Property Name="DeviseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeviseCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nom" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="dtproperty">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="property" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="objectid" Type="Int32" />
+          <Property Name="property" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="value" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="uvalue" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="lvalue" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="version" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Fournisseur">
+          <Key>
+            <PropertyRef Name="FournisseurId" />
+          </Key>
+          <Property Name="FournisseurId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Inter" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="FAX" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Adresse1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Adresse2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VilleId" Type="Int32" />
+          <Property Name="CodePostal" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ProvinceId" Type="Int32" />
+          <NavigationProperty Name="ClientFournisseurs" Relationship="np38965_FAModel.FK_ClientFournisseur_Fournisseur" FromRole="Fournisseur" ToRole="ClientFournisseur" />
+          <NavigationProperty Name="Province" Relationship="np38965_FAModel.FK_Fournisseur_Province" FromRole="Fournisseur" ToRole="Province" />
+          <NavigationProperty Name="Ville" Relationship="np38965_FAModel.FK_Fournisseur_Ville" FromRole="Fournisseur" ToRole="Ville" />
+        </EntityType>
+        <EntityType Name="Langue">
+          <Key>
+            <PropertyRef Name="LangueId" />
+          </Key>
+          <Property Name="LangueId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LangueCode" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="NomFr" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NomAn" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Clients" Relationship="np38965_FAModel.FK_Client_Langue" FromRole="Langue" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="Pay">
+          <Key>
+            <PropertyRef Name="PaysId" />
+          </Key>
+          <Property Name="PaysId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaysCode" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="NomFr" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NomAn" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Provinces" Relationship="np38965_FAModel.FK_ProvinceEtat_Pays" FromRole="Pay" ToRole="Province" />
+        </EntityType>
+        <EntityType Name="Province">
+          <Key>
+            <PropertyRef Name="ProvinceId" />
+          </Key>
+          <Property Name="ProvinceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProvinceCode" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="NomFr" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NomAn" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PaysId" Type="Int32" />
+          <NavigationProperty Name="Fournisseurs" Relationship="np38965_FAModel.FK_Fournisseur_Province" FromRole="Province" ToRole="Fournisseur" />
+          <NavigationProperty Name="Pay" Relationship="np38965_FAModel.FK_ProvinceEtat_Pays" FromRole="Province" ToRole="Pay" />
+          <NavigationProperty Name="Villes" Relationship="np38965_FAModel.FK_Ville_ProvinceEtat" FromRole="Province" ToRole="Ville" />
+        </EntityType>
+        <EntityType Name="Ravitaillement">
+          <Key>
+            <PropertyRef Name="RavitaillementId" />
+          </Key>
+          <Property Name="RavitaillementId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RavitaillementCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="NomFr" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NomAn" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="ServiceId" />
+          </Key>
+          <Property Name="ServiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="NomFr" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NomAn" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Taxe">
+          <Key>
+            <PropertyRef Name="TaxeId" />
+          </Key>
+          <Property Name="TaxeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaxeCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TauxDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Nom" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Taux" Type="Single" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ville">
+          <Key>
+            <PropertyRef Name="VilleId" />
+          </Key>
+          <Property Name="VilleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VilleCode" Type="Int32" Nullable="false" />
+          <Property Name="Nom" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Désignation" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MRCCM" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Région" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ProvinceId" Type="Int32" />
+          <NavigationProperty Name="Clients" Relationship="np38965_FAModel.FK_Client_Ville" FromRole="Ville" ToRole="Client" />
+          <NavigationProperty Name="Fournisseurs" Relationship="np38965_FAModel.FK_Fournisseur_Ville" FromRole="Ville" ToRole="Fournisseur" />
+          <NavigationProperty Name="Province" Relationship="np38965_FAModel.FK_Ville_ProvinceEtat" FromRole="Ville" ToRole="Province" />
+        </EntityType>
+        <EntityType Name="Volume">
+          <Key>
+            <PropertyRef Name="VolumeId" />
+          </Key>
+          <Property Name="VolumeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomFr" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NomAn" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ClientFournisseurs" Relationship="np38965_FAModel.FK_ClientFournisseur_Volume" FromRole="Volume" ToRole="ClientFournisseur" />
+        </EntityType>
+        <EntityType Name="CanadaDailyRacksRaw">
+          <Key>
+            <PropertyRef Name="IdCanadianDailyRackRaw" />
+            <PropertyRef Name="Date" />
+            <PropertyRef Name="CityCode" />
+            <PropertyRef Name="CityName" />
+            <PropertyRef Name="Supplier" />
+            <PropertyRef Name="IndBrand" />
+            <PropertyRef Name="Product" />
+            <PropertyRef Name="Price" />
+          </Key>
+          <Property Name="IdCanadianDailyRackRaw" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CityCode" Type="Int32" Nullable="false" />
+          <Property Name="CityName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Supplier" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IndBrand" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Product" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Move" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="MoveDate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_ClientFournisseur_Service">
+          <End Type="np38965_FAModel.Activite" Role="Activite" Multiplicity="1" />
+          <End Type="np38965_FAModel.ClientFournisseur" Role="ClientFournisseur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activite">
+              <PropertyRef Name="ActiviteId" />
+            </Principal>
+            <Dependent Role="ClientFournisseur">
+              <PropertyRef Name="ActiviteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientCamion_Camion">
+          <End Type="np38965_FAModel.Camion" Role="Camion" Multiplicity="1" />
+          <End Type="np38965_FAModel.ClientCamion" Role="ClientCamion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Camion">
+              <PropertyRef Name="CamionId" />
+            </Principal>
+            <Dependent Role="ClientCamion">
+              <PropertyRef Name="CamionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientCamion_Client">
+          <End Type="np38965_FAModel.Client" Role="Client" Multiplicity="1" />
+          <End Type="np38965_FAModel.ClientCamion" Role="ClientCamion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="ClientCamion">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientFournisseur_Carburant">
+          <End Type="np38965_FAModel.Carburant" Role="Carburant" Multiplicity="1" />
+          <End Type="np38965_FAModel.ClientFournisseur" Role="ClientFournisseur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Carburant">
+              <PropertyRef Name="CarburantId" />
+            </Principal>
+            <Dependent Role="ClientFournisseur">
+              <PropertyRef Name="CarburantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_Langue">
+          <End Type="np38965_FAModel.Langue" Role="Langue" Multiplicity="0..1" />
+          <End Type="np38965_FAModel.Client" Role="Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Langue">
+              <PropertyRef Name="LangueId" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="LangueId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_Ville">
+          <End Type="np38965_FAModel.Ville" Role="Ville" Multiplicity="0..1" />
+          <End Type="np38965_FAModel.Client" Role="Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ville">
+              <PropertyRef Name="VilleId" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="VilleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientFournisseur_Client">
+          <End Type="np38965_FAModel.Client" Role="Client" Multiplicity="1" />
+          <End Type="np38965_FAModel.ClientFournisseur" Role="ClientFournisseur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="ClientFournisseur">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientFournisseur_Fournisseur">
+          <End Type="np38965_FAModel.Fournisseur" Role="Fournisseur" Multiplicity="1" />
+          <End Type="np38965_FAModel.ClientFournisseur" Role="ClientFournisseur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fournisseur">
+              <PropertyRef Name="FournisseurId" />
+            </Principal>
+            <Dependent Role="ClientFournisseur">
+              <PropertyRef Name="FournisseurId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientFournisseur_Volume">
+          <End Type="np38965_FAModel.Volume" Role="Volume" Multiplicity="1" />
+          <End Type="np38965_FAModel.ClientFournisseur" Role="ClientFournisseur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Volume">
+              <PropertyRef Name="VolumeId" />
+            </Principal>
+            <Dependent Role="ClientFournisseur">
+              <PropertyRef Name="VolumeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fournisseur_Province">
+          <End Type="np38965_FAModel.Province" Role="Province" Multiplicity="0..1" />
+          <End Type="np38965_FAModel.Fournisseur" Role="Fournisseur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Province">
+              <PropertyRef Name="ProvinceId" />
+            </Principal>
+            <Dependent Role="Fournisseur">
+              <PropertyRef Name="ProvinceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fournisseur_Ville">
+          <End Type="np38965_FAModel.Ville" Role="Ville" Multiplicity="0..1" />
+          <End Type="np38965_FAModel.Fournisseur" Role="Fournisseur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ville">
+              <PropertyRef Name="VilleId" />
+            </Principal>
+            <Dependent Role="Fournisseur">
+              <PropertyRef Name="VilleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProvinceEtat_Pays">
+          <End Type="np38965_FAModel.Pay" Role="Pay" Multiplicity="0..1" />
+          <End Type="np38965_FAModel.Province" Role="Province" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pay">
+              <PropertyRef Name="PaysId" />
+            </Principal>
+            <Dependent Role="Province">
+              <PropertyRef Name="PaysId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ville_ProvinceEtat">
+          <End Type="np38965_FAModel.Province" Role="Province" Multiplicity="0..1" />
+          <End Type="np38965_FAModel.Ville" Role="Ville" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Province">
+              <PropertyRef Name="ProvinceId" />
+            </Principal>
+            <Dependent Role="Ville">
+              <PropertyRef Name="ProvinceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="np38965_FAModelStoreContainer" CdmEntityContainer="np38965_FAEntities">
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="np38965_FAModel.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="np38965_FAModel.AspNetUserClaims">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="np38965_FAModel.AspNetUserLogins">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="np38965_FAModel.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="DateCreation" ColumnName="DateCreation" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="np38965_FAModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Activites">
+            <EntityTypeMapping TypeName="np38965_FAModel.Activite">
+              <MappingFragment StoreEntitySet="Activite">
+                <ScalarProperty Name="NomAn" ColumnName="NomAn" />
+                <ScalarProperty Name="NomFr" ColumnName="NomFr" />
+                <ScalarProperty Name="ActiviteId" ColumnName="ActiviteId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Camions">
+            <EntityTypeMapping TypeName="np38965_FAModel.Camion">
+              <MappingFragment StoreEntitySet="Camion">
+                <ScalarProperty Name="NomAn" ColumnName="NomAn" />
+                <ScalarProperty Name="NomFr" ColumnName="NomFr" />
+                <ScalarProperty Name="CamionId" ColumnName="CamionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientCamions">
+            <EntityTypeMapping TypeName="np38965_FAModel.ClientCamion">
+              <MappingFragment StoreEntitySet="ClientCamion">
+                <ScalarProperty Name="CamionId" ColumnName="CamionId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="ClientCamionId" ColumnName="ClientCamionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Carburants">
+            <EntityTypeMapping TypeName="np38965_FAModel.Carburant">
+              <MappingFragment StoreEntitySet="Carburant">
+                <ScalarProperty Name="Actif" ColumnName="Actif" />
+                <ScalarProperty Name="NomAn" ColumnName="NomAn" />
+                <ScalarProperty Name="NomFr" ColumnName="NomFr" />
+                <ScalarProperty Name="CarburantId" ColumnName="CarburantId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="np38965_FAModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="Utilisateur" ColumnName="Utilisateur" />
+                <ScalarProperty Name="DateModification" ColumnName="DateModification" />
+                <ScalarProperty Name="DateCreation" ColumnName="DateCreation" />
+                <ScalarProperty Name="Actif" ColumnName="Actif" />
+                <ScalarProperty Name="NomCompagnie" ColumnName="NomCompagnie" />
+                <ScalarProperty Name="DateCreationCompagnie" ColumnName="DateCreationCompagnie" />
+                <ScalarProperty Name="NombreEmploye" ColumnName="NombreEmploye" />
+                <ScalarProperty Name="NombreHeureOperation" ColumnName="NombreHeureOperation" />
+                <ScalarProperty Name="NombreCamion" ColumnName="NombreCamion" />
+                <ScalarProperty Name="LangueId" ColumnName="LangueId" />
+                <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
+                <ScalarProperty Name="ContactInter" ColumnName="ContactInter" />
+                <ScalarProperty Name="ContactTelephone" ColumnName="ContactTelephone" />
+                <ScalarProperty Name="ContactNom" ColumnName="ContactNom" />
+                <ScalarProperty Name="CodePostal" ColumnName="CodePostal" />
+                <ScalarProperty Name="VilleId" ColumnName="VilleId" />
+                <ScalarProperty Name="Adresse2" ColumnName="Adresse2" />
+                <ScalarProperty Name="Adresse1" ColumnName="Adresse1" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FAX" ColumnName="FAX" />
+                <ScalarProperty Name="Inter" ColumnName="Inter" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientFournisseurs">
+            <EntityTypeMapping TypeName="np38965_FAModel.ClientFournisseur">
+              <MappingFragment StoreEntitySet="ClientFournisseur">
+                <ScalarProperty Name="Commentaire" ColumnName="Commentaire" />
+                <ScalarProperty Name="Statut" ColumnName="Statut" />
+                <ScalarProperty Name="DateDebutContrat" ColumnName="DateDebutContrat" />
+                <ScalarProperty Name="ActiviteId" ColumnName="ActiviteId" />
+                <ScalarProperty Name="DateFinContrat" ColumnName="DateFinContrat" />
+                <ScalarProperty Name="Marge" ColumnName="Marge" />
+                <ScalarProperty Name="VolumeId" ColumnName="VolumeId" />
+                <ScalarProperty Name="CarburantId" ColumnName="CarburantId" />
+                <ScalarProperty Name="FournisseurId" ColumnName="FournisseurId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="ClientFournisseurId" ColumnName="ClientFournisseurId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Devises">
+            <EntityTypeMapping TypeName="np38965_FAModel.Devise">
+              <MappingFragment StoreEntitySet="Devise">
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="DeviseCode" ColumnName="DeviseCode" />
+                <ScalarProperty Name="DeviseId" ColumnName="DeviseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dtproperties">
+            <EntityTypeMapping TypeName="np38965_FAModel.dtproperty">
+              <MappingFragment StoreEntitySet="dtproperties">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="lvalue" ColumnName="lvalue" />
+                <ScalarProperty Name="uvalue" ColumnName="uvalue" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="property" ColumnName="property" />
+                <ScalarProperty Name="objectid" ColumnName="objectid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fournisseurs">
+            <EntityTypeMapping TypeName="np38965_FAModel.Fournisseur">
+              <MappingFragment StoreEntitySet="Fournisseur">
+                <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+                <ScalarProperty Name="CodePostal" ColumnName="CodePostal" />
+                <ScalarProperty Name="VilleId" ColumnName="VilleId" />
+                <ScalarProperty Name="Adresse2" ColumnName="Adresse2" />
+                <ScalarProperty Name="Adresse1" ColumnName="Adresse1" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FAX" ColumnName="FAX" />
+                <ScalarProperty Name="Inter" ColumnName="Inter" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="FournisseurId" ColumnName="FournisseurId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Langues">
+            <EntityTypeMapping TypeName="np38965_FAModel.Langue">
+              <MappingFragment StoreEntitySet="Langue">
+                <ScalarProperty Name="NomAn" ColumnName="NomAn" />
+                <ScalarProperty Name="NomFr" ColumnName="NomFr" />
+                <ScalarProperty Name="LangueCode" ColumnName="LangueCode" />
+                <ScalarProperty Name="LangueId" ColumnName="LangueId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pays">
+            <EntityTypeMapping TypeName="np38965_FAModel.Pay">
+              <MappingFragment StoreEntitySet="Pays">
+                <ScalarProperty Name="NomAn" ColumnName="NomAn" />
+                <ScalarProperty Name="NomFr" ColumnName="NomFr" />
+                <ScalarProperty Name="PaysCode" ColumnName="PaysCode" />
+                <ScalarProperty Name="PaysId" ColumnName="PaysId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provinces">
+            <EntityTypeMapping TypeName="np38965_FAModel.Province">
+              <MappingFragment StoreEntitySet="Province">
+                <ScalarProperty Name="PaysId" ColumnName="PaysId" />
+                <ScalarProperty Name="NomAn" ColumnName="NomAn" />
+                <ScalarProperty Name="NomFr" ColumnName="NomFr" />
+                <ScalarProperty Name="ProvinceCode" ColumnName="ProvinceCode" />
+                <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ravitaillements">
+            <EntityTypeMapping TypeName="np38965_FAModel.Ravitaillement">
+              <MappingFragment StoreEntitySet="Ravitaillement">
+                <ScalarProperty Name="NomAn" ColumnName="NomAn" />
+                <ScalarProperty Name="NomFr" ColumnName="NomFr" />
+                <ScalarProperty Name="RavitaillementCode" ColumnName="RavitaillementCode" />
+                <ScalarProperty Name="RavitaillementId" ColumnName="RavitaillementId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Services">
+            <EntityTypeMapping TypeName="np38965_FAModel.Service">
+              <MappingFragment StoreEntitySet="Service">
+                <ScalarProperty Name="NomAn" ColumnName="NomAn" />
+                <ScalarProperty Name="NomFr" ColumnName="NomFr" />
+                <ScalarProperty Name="ServiceCode" ColumnName="ServiceCode" />
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="np38965_FAModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Taxes">
+            <EntityTypeMapping TypeName="np38965_FAModel.Taxe">
+              <MappingFragment StoreEntitySet="Taxe">
+                <ScalarProperty Name="Taux" ColumnName="Taux" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="TauxDate" ColumnName="TauxDate" />
+                <ScalarProperty Name="TaxeCode" ColumnName="TaxeCode" />
+                <ScalarProperty Name="TaxeId" ColumnName="TaxeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Villes">
+            <EntityTypeMapping TypeName="np38965_FAModel.Ville">
+              <MappingFragment StoreEntitySet="Ville">
+                <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+                <ScalarProperty Name="Région" ColumnName="Région" />
+                <ScalarProperty Name="MRCCM" ColumnName="MRCCM" />
+                <ScalarProperty Name="Désignation" ColumnName="Désignation" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="VilleCode" ColumnName="VilleCode" />
+                <ScalarProperty Name="VilleId" ColumnName="VilleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Volumes">
+            <EntityTypeMapping TypeName="np38965_FAModel.Volume">
+              <MappingFragment StoreEntitySet="Volume">
+                <ScalarProperty Name="NomAn" ColumnName="NomAn" />
+                <ScalarProperty Name="NomFr" ColumnName="NomFr" />
+                <ScalarProperty Name="VolumeId" ColumnName="VolumeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CanadaDailyRacksRaws">
+            <EntityTypeMapping TypeName="np38965_FAModel.CanadaDailyRacksRaw">
+              <MappingFragment StoreEntitySet="CanadaDailyRacksRaw">
+                <ScalarProperty Name="MoveDate" ColumnName="MoveDate" />
+                <ScalarProperty Name="Move" ColumnName="Move" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Product" ColumnName="Product" />
+                <ScalarProperty Name="IndBrand" ColumnName="IndBrand" />
+                <ScalarProperty Name="Supplier" ColumnName="Supplier" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="CityCode" ColumnName="CityCode" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="IdCanadianDailyRackRaw" ColumnName="IdCanadianDailyRackRaw" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
